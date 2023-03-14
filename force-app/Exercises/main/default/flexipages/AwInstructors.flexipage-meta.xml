@@ -7,14 +7,20 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>studentBrowserForm</componentName>
-                <identifier>c_studentBrowserForm</identifier>
+                <componentName>studentBrowser</componentName>
+                <identifier>c_studentBrowser</identifier>
             </componentInstance>
         </itemInstances>
         <name>region2</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>studentDetail</componentName>
+                <identifier>c_studentDetail</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
