@@ -1,7 +1,7 @@
 import { LightningElement, api, wire } from 'lwc';
 import Utils from 'c/utils';
 import LABEL_FEATURE_NOT_AVAILABLE from
-'@salesforce/label/c.Feature_Not_Available';
+    '@salesforce/label/c.Feature_Not_Available';
 import getCertifiedStudents from
     '@salesforce/apex/CertifiedStudentList.getCertifiedStudents';
 import deleteStudentCertification from
@@ -41,10 +41,10 @@ export default class CertifiedStudentList extends LightningElement {
     }
 
     notAvailable() {
-        Utils.showModal(this,'Not Available',
-        LABEL_FEATURE_NOT_AVAILABLE);
-        }
-        
+        Utils.showModal(this, 'Not Available',
+            LABEL_FEATURE_NOT_AVAILABLE);
+    }
+
     onRowSelection(event) {
         const numSelected = event.detail.selectedRows.length;
         this.btnGroupDisabled = (numSelected === 0);
@@ -99,14 +99,14 @@ export default class CertifiedStudentList extends LightningElement {
 
     onDelete() {
         const certificationIds = this.getSelectedIDs();
-        deleteStudentCertification({certificationIds})
-        .then( () => {
-            refreshApex(this._wiredStudentResult);
+        deleteStudentCertification({ certificationIds })
+            .then(() => {
+                refreshApex(this._wiredStudentResult);
             })
             .catch(error => {
-            this.error = error;
+                this.error = error;
             });
-        }
+    }
 
 
 }
