@@ -12,6 +12,15 @@ export default class LayoutManager extends LightningElement {
 	certificationName = '';
 	certificationId = 0;
 
+	connectedCallback() {
+		Utils.showToast(
+			this,
+			'Welcome',
+			"Don't forget to check back here for updated class schedules and assignments",
+			'info'
+			);
+	}
+	
 	handleNavItemSelected(event) {
 		const selectedItemName = event.detail.itemName;
 		
@@ -42,12 +51,5 @@ export default class LayoutManager extends LightningElement {
 		return (this.viewMode === VIEW_POPULARITY);
 	}
 
-	connectedCallback() {
-		Utils.showToast(
-			this,
-			'Welcome',
-			"Don't forget to check back here for updated class schedules and assignments",
-			'info'
-			);
-	}
+	
 }
