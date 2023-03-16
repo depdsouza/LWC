@@ -7,7 +7,9 @@ import { publish, MessageContext } from
   'lightning/messageService';
 import SELECTED_STUDENT_CHANNEL from
   '@salesforce/messageChannel/SelectedStudentChannel__c';
-export default class StudentBrowser extends LightningElement {
+
+import { NavigationMixin } from 'lightning/navigation';
+export default class StudentBrowser extends NavigationMixin(LightningElement) {
   selectedDeliveryId = '';
   selectedInstructorId = '';
 
@@ -56,4 +58,18 @@ export default class StudentBrowser extends LightningElement {
       studentId: studentId
     });
   }
+
+  handleRowDblClick(event) {
+    const studentId = event.detail.pk;
+    this[NavigationMixin.Navigate]({
+      type: 'standard__recordPage',
+      attributes: {
+        recordId: studentId,
+        objectApiName: 'Contact',
+        actionName: 'edit'
+      }
+    });
+  }
+
+
 }
