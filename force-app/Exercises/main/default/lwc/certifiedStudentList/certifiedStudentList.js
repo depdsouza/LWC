@@ -1,10 +1,13 @@
 import { LightningElement, api, wire } from 'lwc';
+import Utils from 'c/utils';
+import LABEL_FEATURE_NOT_AVAILABLE from
+'@salesforce/label/c.Feature_Not_Available';
 import getCertifiedStudents from
     '@salesforce/apex/CertifiedStudentList.getCertifiedStudents';
 import deleteStudentCertification from
     '@salesforce/apex/CertifiedStudentList.deleteStudentCertification';
 import { refreshApex } from '@salesforce/apex';
-import Utils from 'c/utils';
+
 export default class CertifiedStudentList extends LightningElement {
     @api certificationId = 0;
     @api certificationName = '';
@@ -37,6 +40,11 @@ export default class CertifiedStudentList extends LightningElement {
         }
     }
 
+    notAvailable() {
+        Utils.showModal(this,'Not Available',
+        LABEL_FEATURE_NOT_AVAILABLE);
+        }
+        
     onRowSelection(event) {
         const numSelected = event.detail.selectedRows.length;
         this.btnGroupDisabled = (numSelected === 0);
@@ -100,8 +108,5 @@ export default class CertifiedStudentList extends LightningElement {
             });
         }
 
-        notAvailable() {
-            Utils.showModal(this,'Not Available', 'This feature is currently unavailable');
-            }
 
 }
