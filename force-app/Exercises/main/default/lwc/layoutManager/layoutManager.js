@@ -8,11 +8,13 @@ const VIEW_POPULARITY = 'certPopularity';
 
 export default class LayoutManager extends LightningElement {
 
+
 	viewMode = VIEW_STUDENT_BROWSER;
 	certificationName = '';
 	certificationId = 0;
 	modalHeader = '';
 	modalContent = '';
+	loading = true;
 
 	handleShowModal(event) {
 		this.modalHeader = event.detail.header;
@@ -63,6 +65,12 @@ export default class LayoutManager extends LightningElement {
 	}
 	get certPopularityView() {
 		return (this.viewMode === VIEW_POPULARITY);
+	}
+	handleLoading() {
+		this.loading = true;
+	}
+	handleDoneLoading() {
+		this.loading = false;
 	}
 
 

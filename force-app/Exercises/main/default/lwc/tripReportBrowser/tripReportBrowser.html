@@ -3,7 +3,7 @@
 		<lightning-layout-item size="8">
 			<lightning-card title="Trip Reports">
 				<lightning-button slot="actions" label="New" variant="brand"
-					onclick={onBtnNewClick}></lightning-button>></lightning-button>
+					onclick={onBtnNewClick}></lightning-button>
 				<div class="slds-scrollable scrollerSize">
 					<c-responsive-datatable pk-field="Id" column-config={cols} row-data={tripReports}
 						onrowclick={handleRowClick} onrowdblclick={handleRowDblClick}>

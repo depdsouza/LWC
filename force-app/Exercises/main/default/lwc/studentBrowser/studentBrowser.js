@@ -14,11 +14,18 @@ export default class StudentBrowser extends NavigationMixin(LightningElement) {
   selectedInstructorId = '';
 
   // @wire(getStudents) students;
+  students = [];
   @wire(getStudents, {
     instructorId: '$selectedInstructorId', courseDeliveryId:
       '$selectedDeliveryId'
   })
-  students;
+  wired_getStudents(result) {
+    if ((result.data) || (result.error)) {
+    this.students = result;
+    this.dispatchEvent(new CustomEvent("doneloading",
+    {bubbles: true, composed: true }));
+    }
+    }
 
   cols = [
     {
@@ -46,6 +53,8 @@ export default class StudentBrowser extends NavigationMixin(LightningElement) {
   handleFilterChange(event) {
     this.selectedDeliveryId = event.detail.deliveryId;
     this.selectedInstructorId = event.detail.instructorId;
+    this.dispatchEvent(new CustomEvent('loading',
+      { bubbles: true, composed: true }));
   }
 
   handleStudentSelected(event) {
