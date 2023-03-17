@@ -190,4 +190,28 @@ export default class TripReportFormAdvanced extends LightningElement {
             currentField.checkValidity());
     }
 
+    returnToBrowseMode() {
+        const evt = new CustomEvent('tripreportmodechange', {
+            detail: {
+                mode: "browse"
+            },
+        });
+        this.dispatchEvent(evt);
+        createRecord(recordInput)
+            .then(tripReport => {
+                this.recordId = tripReport.id;
+                Utils.showToast(this, 'Success',
+                    'Trip Report Created', 'success');
+                this.returnToBrowseMode();
+            })
+        updateRecord(recordInput)
+            .then(() => {
+                Utils.showToast(this, 'Success',
+                    'Trip report updated', 'success');
+                this.returnToBrowseMode();
+            })
+    }
+
+
+
 }
