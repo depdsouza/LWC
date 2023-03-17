@@ -32,6 +32,11 @@ export default class TripReportFormAdvanced extends LightningElement {
 
     error;
     _editorInitialized;
+    saveButtonDisabled = true;
+
+    onBlur() {
+        this.saveButtonDisabled = !this.validateFields();
+    }
 
     @api recordId;
 
@@ -144,8 +149,10 @@ export default class TripReportFormAdvanced extends LightningElement {
             //todo #6: When creating a new record, define an object named recordInput with two property:
             //---fields, which contains the fieldsToSave object
             //---apiName, which contains the api name of the trip report object
-            const recordInput = { fields:fieldsToSave, apiName:
-                OBJECT_TRIP_REPORT.objectApiName};
+            const recordInput = {
+                fields: fieldsToSave, apiName:
+                    OBJECT_TRIP_REPORT.objectApiName
+            };
 
             createRecord(recordInput)
                 .then(tripReport => {
@@ -175,6 +182,12 @@ export default class TripReportFormAdvanced extends LightningElement {
                 });
         }
 
+    }
+    validateFields() {
+        const fields =
+            Array.from(this.template.querySelectorAll('.validateMe'));
+        return fields.every((currentField) =>
+            currentField.checkValidity());
     }
 
 }
