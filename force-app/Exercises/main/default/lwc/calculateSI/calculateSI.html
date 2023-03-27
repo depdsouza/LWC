@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Calculate Simple Interest" icon-name="custom:custom10">
+        <lightning-input label="Enter Principle" placeholder="Principle" onchange={handlePrinciple}></lightning-input>
+        <lightning-input label="Enter Rate" placeholder="Rate" onchange={handleRate}></lightning-input>
+        <lightning-input label="Enter Time" placeholder="Time" onchange={handleTime}></lightning-input>
+        <lightning-button label={result} variant="success" onclick={calculate}></lightning-button>
+    </lightning-card>
+</template>
